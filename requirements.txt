@@ -1,0 +1,9 @@
+ultralytics==8.0.200
+opencv-python==4.8.1.78
+python-can==4.2.2
+paho-mqtt==1.6.1
+streamlit==1.28.1
+pandas==2.1.2
+numpy==1.24.3
+torch>=2.0.0
+torchvision>=0.15.0
