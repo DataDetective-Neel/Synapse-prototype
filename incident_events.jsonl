@@ -1,0 +1,28 @@
+{"event_id": "1776613512524438900", "event": "Heartbeat", "status": "SAFE", "object_type": "none", "source": "driver-dashboard", "timestamp": "1776613512.5244389", "local_time": "21:15:12"}
+{"event_id": "1776613514576266700", "event": "Heartbeat", "status": "SAFE", "object_type": "none", "source": "driver-dashboard", "timestamp": "1776613514.5762668", "local_time": "21:15:14"}
+{"event_id": "1776613516646605900", "event": "Heartbeat", "status": "SAFE", "object_type": "none", "source": "driver-dashboard", "timestamp": "1776613516.6466057", "local_time": "21:15:16"}
+{"event_id": "1776613518730559600", "event": "Heartbeat", "status": "SAFE", "object_type": "none", "source": "driver-dashboard", "timestamp": "1776613518.7305596", "local_time": "21:15:18"}
+{"event_id": "1776613520815725700", "event": "Heartbeat", "status": "SAFE", "object_type": "none", "source": "driver-dashboard", "timestamp": "1776613520.8157258", "local_time": "21:15:20"}
+{"event_id": "1776613522987992600", "event": "Heartbeat", "status": "SAFE", "object_type": "none", "source": "driver-dashboard", "timestamp": "1776613522.9879925", "local_time": "21:15:22"}
+{"event_id": "1776613525080601700", "event": "Heartbeat", "status": "SAFE", "object_type": "none", "source": "driver-dashboard", "timestamp": "1776613525.0806017", "local_time": "21:15:25"}
+{"event_id": "1776613527109418200", "event": "Heartbeat", "status": "SAFE", "object_type": "none", "source": "driver-dashboard", "timestamp": "1776613527.1094182", "local_time": "21:15:27"}
+{"event_id": "1776613529177587300", "event": "Heartbeat", "status": "SAFE", "object_type": "none", "source": "driver-dashboard", "timestamp": "1776613529.1775873", "local_time": "21:15:29"}
+{"event_id": "1776613531332715900", "event": "Alert Update", "status": "DANGER", "object_type": "person", "source": "driver-dashboard", "timestamp": "1776613531.3327157", "local_time": "21:15:31"}
+{"event_id": "1776613531954278700", "event": "Alert Update", "status": "DANGER", "object_type": "person", "source": "driver-dashboard", "timestamp": "1776613531.9542787", "local_time": "21:15:31"}
+{"event_id": "1776613532073168600", "event": "Heartbeat", "status": "SAFE", "object_type": "none", "source": "driver-dashboard", "timestamp": "1776613532.0731688", "local_time": "21:15:32"}
+{"event_id": "1776613534103722100", "event": "Heartbeat", "status": "SAFE", "object_type": "none", "source": "driver-dashboard", "timestamp": "1776613534.103722", "local_time": "21:15:34"}
+{"event_id": "1776613536305240400", "event": "Alert Update", "status": "DANGER", "object_type": "person", "source": "driver-dashboard", "timestamp": "1776613536.3052404", "local_time": "21:15:36"}
+{"event_id": "1776613536424179900", "event": "Heartbeat", "status": "SAFE", "object_type": "none", "source": "driver-dashboard", "timestamp": "1776613536.42418", "local_time": "21:15:36"}
+{"event_id": "1776613538489992300", "event": "Heartbeat", "status": "SAFE", "object_type": "none", "source": "driver-dashboard", "timestamp": "1776613538.4899921", "local_time": "21:15:38"}
+{"event_id": "1776613540586998100", "event": "Heartbeat", "status": "SAFE", "object_type": "none", "source": "driver-dashboard", "timestamp": "1776613540.586998", "local_time": "21:15:40"}
+{"event_id": "1776613541594024400", "event": "Alert Update", "status": "DANGER", "object_type": "person", "source": "driver-dashboard", "timestamp": "1776613541.5940244", "local_time": "21:15:41"}
+{"event_id": "1776613542222304600", "event": "Alert Update", "status": "DANGER", "object_type": "person", "source": "driver-dashboard", "timestamp": "1776613542.2223046", "local_time": "21:15:42"}
+{"event_id": "1776613542840883900", "event": "Alert Update", "status": "DANGER", "object_type": "person", "source": "driver-dashboard", "timestamp": "1776613542.840884", "local_time": "21:15:42"}
+{"event_id": "1776613542972471700", "event": "Heartbeat", "status": "SAFE", "object_type": "none", "source": "driver-dashboard", "timestamp": "1776613542.9724717", "local_time": "21:15:42"}
+{"event_id": "1776613545060974500", "event": "Heartbeat", "status": "SAFE", "object_type": "none", "source": "driver-dashboard", "timestamp": "1776613545.0609746", "local_time": "21:15:45"}
+{"event_id": "1776613547102123400", "event": "Heartbeat", "status": "SAFE", "object_type": "none", "source": "driver-dashboard", "timestamp": "1776613547.1021235", "local_time": "21:15:47"}
+{"event_id": "1776613549206537100", "event": "Heartbeat", "status": "SAFE", "object_type": "none", "source": "driver-dashboard", "timestamp": "1776613549.2065372", "local_time": "21:15:49"}
+{"event_id": "1776613551276798800", "event": "Heartbeat", "status": "SAFE", "object_type": "none", "source": "driver-dashboard", "timestamp": "1776613551.2767987", "local_time": "21:15:51"}
+{"event_id": "1776613553355075600", "event": "Heartbeat", "status": "SAFE", "object_type": "none", "source": "driver-dashboard", "timestamp": "1776613553.3550756", "local_time": "21:15:53"}
+{"event_id": "1776613555373771800", "event": "Heartbeat", "status": "SAFE", "object_type": "none", "source": "driver-dashboard", "timestamp": "1776613555.3737717", "local_time": "21:15:55"}
+{"event_id": "1776613557428414500", "event": "Heartbeat", "status": "SAFE", "object_type": "none", "source": "driver-dashboard", "timestamp": "1776613557.4284146", "local_time": "21:15:57"}

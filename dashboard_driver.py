@@ -10,6 +10,7 @@ from core.can_handler import CANBusSimulator
 
 MQTT_BROKERS = ["broker.hivemq.com", "test.mosquitto.org"]
 MQTT_TOPIC = "adas/alerts/company"
+EVENTS_FILE = "incident_events.jsonl"
 
 # Platform-specific audio alert
 try:
@@ -28,6 +29,15 @@ def trigger_audio_alert():
             winsound.Beep(1000, 500)
         except Exception as e:
             print(f"Audio alert error: {e}")
+
+
+def append_local_event(payload):
+    """Write events locally so company dashboard can always show incident history."""
+    try:
+        with open(EVENTS_FILE, "a", encoding="utf-8") as f:
+            f.write(json.dumps(payload) + "\n")
+    except Exception as e:
+        print(f"Local event write error: {e}")
 
 
 def run_driver_dashboard(source=0):
@@ -85,6 +95,7 @@ def run_driver_dashboard(source=0):
                     status_text = str(alert['status']).upper()
                     status_label = "DANGER" if status_text.startswith("DANGER") else "SAFE"
                     payload = {
+                        "event_id": str(time.time_ns()),
                         "event": "Alert Update",
                         "status": status_label,
                         "object_type": alert['type'],
@@ -93,6 +104,20 @@ def run_driver_dashboard(source=0):
                         "local_time": datetime.now().strftime("%H:%M:%S")
                     }
                     mqtt_client.publish(MQTT_TOPIC, json.dumps(payload))
+                    append_local_event(payload)
+                else:
+                    status_text = str(alert['status']).upper()
+                    status_label = "DANGER" if status_text.startswith("DANGER") else "SAFE"
+                    payload = {
+                        "event_id": str(time.time_ns()),
+                        "event": "Alert Update",
+                        "status": status_label,
+                        "object_type": alert['type'],
+                        "source": "driver-dashboard-local",
+                        "timestamp": str(time.time()),
+                        "local_time": datetime.now().strftime("%H:%M:%S")
+                    }
+                    append_local_event(payload)
                 
                 # Add text alert to screen
                 cv2.putText(annotated_frame, "!!! WARNING !!!", (50, 50),
@@ -102,6 +127,7 @@ def run_driver_dashboard(source=0):
             now = time.time()
             if mqtt_connected and (now - last_heartbeat_ts) >= 2.0:
                 payload = {
+                    "event_id": str(time.time_ns()),
                     "event": "Heartbeat",
                     "status": "SAFE",
                     "object_type": "none",
@@ -110,6 +136,7 @@ def run_driver_dashboard(source=0):
                     "local_time": datetime.now().strftime("%H:%M:%S")
                 }
                 mqtt_client.publish(MQTT_TOPIC, json.dumps(payload))
+                append_local_event(payload)
                 last_heartbeat_ts = now
 
         # 3. Display the Dashboard

@@ -6,8 +6,9 @@ import pandas as pd
 from datetime import datetime
 import time
 from queue import Queue, Empty
+import os
 
-INCOMING_QUEUE = Queue()
+EVENTS_FILE = "incident_events.jsonl"
 
 # Page Config
 st.set_page_config(page_title="ADAS Company Monitor", layout="wide")
@@ -18,6 +19,12 @@ if 'alert_history' not in st.session_state:
     st.session_state.alert_history = []
 if 'messages_received' not in st.session_state:
     st.session_state.messages_received = 0
+if 'incoming_queue' not in st.session_state:
+    st.session_state.incoming_queue = Queue()
+if 'event_ids' not in st.session_state:
+    st.session_state.event_ids = set()
+if 'file_offset' not in st.session_state:
+    st.session_state.file_offset = 0
 
 # MQTT Configuration
 MQTT_BROKERS = ["broker.hivemq.com", "test.mosquitto.org"]
@@ -28,8 +35,9 @@ def on_message(client, userdata, msg):
     try:
         payload = json.loads(msg.payload.decode())
         payload['local_time'] = datetime.now().strftime("%H:%M:%S")
-        # Push into a thread-safe queue; Streamlit state must be updated in main thread.
-        INCOMING_QUEUE.put(payload)
+        # Push into a thread-safe queue provided as MQTT userdata.
+        if userdata is not None:
+            userdata.put(payload)
 
     except Exception as e:
         print(f"Error parsing MQTT: {e}")
@@ -37,6 +45,7 @@ def on_message(client, userdata, msg):
 # Setup MQTT Client (avoid reconnecting every rerun)
 if "mqtt_client" not in st.session_state:
     client = mqtt.Client()
+    client.user_data_set(st.session_state.incoming_queue)
     client.on_message = on_message
     st.session_state.mqtt_connected = False
     st.session_state.mqtt_broker = "none"
@@ -66,13 +75,38 @@ if "mqtt_client" not in st.session_state:
 # Drain queued MQTT payloads into session state on the main Streamlit thread.
 while True:
     try:
-        item = INCOMING_QUEUE.get_nowait()
-        st.session_state.alert_history.insert(0, item)
-        st.session_state.messages_received += 1
-        if len(st.session_state.alert_history) > 50:
-            st.session_state.alert_history.pop()
+        item = st.session_state.incoming_queue.get_nowait()
+        event_id = item.get('event_id')
+        if event_id is None or event_id not in st.session_state.event_ids:
+            if event_id is not None:
+                st.session_state.event_ids.add(event_id)
+            st.session_state.alert_history.insert(0, item)
+            st.session_state.messages_received += 1
+            if len(st.session_state.alert_history) > 50:
+                st.session_state.alert_history.pop()
     except Empty:
         break
+
+# Local file fallback ingestion for guaranteed prototype logging.
+if os.path.exists(EVENTS_FILE):
+    try:
+        with open(EVENTS_FILE, "r", encoding="utf-8") as f:
+            f.seek(st.session_state.file_offset)
+            for line in f:
+                line = line.strip()
+                if not line:
+                    continue
+                item = json.loads(line)
+                event_id = item.get('event_id')
+                if event_id is None or event_id not in st.session_state.event_ids:
+                    if event_id is not None:
+                        st.session_state.event_ids.add(event_id)
+                    st.session_state.alert_history.insert(0, item)
+                    if len(st.session_state.alert_history) > 50:
+                        st.session_state.alert_history.pop()
+            st.session_state.file_offset = f.tell()
+    except Exception as e:
+        st.warning(f"Local fallback read error: {e}")
 
 # UI Layout
 col1, col2 = st.columns([1, 2])
