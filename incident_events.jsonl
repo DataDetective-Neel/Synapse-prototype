@@ -176,3 +176,11 @@
 {"event_id": "1776779356108550200", "event": "Heartbeat", "status": "SAFE", "object_type": "none", "source": "driver-dashboard", "timestamp": "1776779356.10855", "local_time": "19:19:16"}
 {"event_id": "1776779358122673800", "event": "Heartbeat", "status": "SAFE", "object_type": "none", "source": "driver-dashboard", "timestamp": "1776779358.122674", "local_time": "19:19:18"}
 {"event_id": "1776779358825025500", "event": "Alert Update", "status": "DANGER", "object_type": "person", "source": "driver-dashboard", "timestamp": "1776779358.8250256", "local_time": "19:19:18"}
+{"event_id": "1776865938884960900", "event": "Alert Update", "status": "DANGER", "object_type": "person", "source": "driver-dashboard-local", "timestamp": "1776865938.8849611", "local_time": "19:22:18"}
+{"event_id": "1776865940216541000", "event": "Alert Update", "status": "DANGER", "object_type": "bottle", "source": "driver-dashboard-local", "timestamp": "1776865940.2165408", "local_time": "19:22:20"}
+{"event_id": "1776865940826817100", "event": "Alert Update", "status": "DANGER", "object_type": "person", "source": "driver-dashboard-local", "timestamp": "1776865940.826817", "local_time": "19:22:20"}
+{"event_id": "1776865940826817100", "event": "Alert Update", "status": "DANGER", "object_type": "laptop", "source": "driver-dashboard-local", "timestamp": "1776865940.826817", "local_time": "19:22:20"}
+{"event_id": "1776865942344260300", "event": "Alert Update", "status": "DANGER", "object_type": "person", "source": "driver-dashboard-local", "timestamp": "1776865942.3442605", "local_time": "19:22:22"}
+{"event_id": "1776865943593090100", "event": "Alert Update", "status": "DANGER", "object_type": "person", "source": "driver-dashboard-local", "timestamp": "1776865943.59309", "local_time": "19:22:23"}
+{"event_id": "1776865944632640100", "event": "Alert Update", "status": "DANGER", "object_type": "person", "source": "driver-dashboard-local", "timestamp": "1776865944.63264", "local_time": "19:22:24"}
+{"event_id": "1776865946366302700", "event": "Alert Update", "status": "DANGER", "object_type": "person", "source": "driver-dashboard-local", "timestamp": "1776865946.3663027", "local_time": "19:22:26"}
